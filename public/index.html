@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZeroHour AI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">⚡ ZeroHour AI</div>
+    <div class="nav-tabs">
+      <button class="nav-btn active" onclick="showSection('chat')"><i class="fa fa-comments"></i> AI Assistant</button>
+      <button class="nav-btn" onclick="showSection('deadlines')"><i class="fa fa-clock"></i> Deadlines</button>
+      <button class="nav-btn" onclick="showSection('habits')"><i class="fa fa-fire"></i> Goals & Habits</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- SECTION 1: AI CHAT -->
+    <section id="chat" class="section active">
+      <div class="section-header">
+        <h2>💬 AI Productivity Assistant</h2>
+        <p>Tell me your situation and I'll help you take action right now.</p>
+      </div>
+      <div class="chat-box" id="chatBox">
+        <div class="message ai-message">
+          <span>👋 Hey! I'm your ZeroHour AI assistant. Tell me what's stressing you out — a deadline, an exam, a meeting — and I'll help you crush it!</span>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="e.g. I have an exam tomorrow and haven't studied..." onkeydown="if(event.key==='Enter') sendMessage()"/>
+        <button onclick="sendMessage()" class="send-btn"><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </section>
+
+    <!-- SECTION 2: DEADLINES -->
+    <section id="deadlines" class="section">
+      <div class="section-header">
+        <h2>⏰ Deadline Tracker</h2>
+        <p>Add your tasks and never miss a deadline again.</p>
+      </div>
+
+      <div class="add-task-form">
+        <input type="text" id="taskName" placeholder="Task name (e.g. Submit assignment)"/>
+        <input type="date" id="taskDeadline"/>
+        <select id="taskCategory">
+          <option value="Study">📚 Study</option>
+          <option value="Work">💼 Work</option>
+          <option value="Personal">🏠 Personal</option>
+          <option value="Health">💪 Health</option>
+          <option value="Finance">💰 Finance</option>
+        </select>
+        <button onclick="addTask()" class="add-btn"><i class="fa fa-plus"></i> Add Task</button>
+      </div>
+
+      <div id="taskList" class="task-list"></div>
+    </section>
+
+    <!-- SECTION 3: HABITS -->
+    <section id="habits" class="section">
+      <div class="section-header">
+        <h2>🎯 Goals & Habit Tracker</h2>
+        <p>Build habits, track streaks, and let AI motivate you.</p>
+      </div>
+
+      <div class="add-task-form">
+        <input type="text" id="habitName" placeholder="Habit name (e.g. Study 2 hours)"/>
+        <select id="habitFrequency">
+          <option value="Daily">📅 Daily</option>
+          <option value="Weekly">📆 Weekly</option>
+        </select>
+        <button onclick="addHabit()" class="add-btn"><i class="fa fa-plus"></i> Add Habit</button>
+      </div>
+
+      <div id="habitList" class="task-list"></div>
+      <button onclick="getHabitMotivation()" class="motivate-btn"><i class="fa fa-robot"></i> Get AI Motivation</button>
+      <div id="motivationBox" class="motivation-box hidden"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
